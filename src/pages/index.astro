@@ -54,6 +54,13 @@ const description = 'A minimal, extensible, lightning-fast Minecraft launcher';
 	</body>
 </html>
 
+<script>
+	const header = document.querySelector('.topbar');
+	const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 0);
+	onScroll();
+	window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+
 <style>
 	:global(html),
 	:global(body) {
@@ -65,14 +72,23 @@ const description = 'A minimal, extensible, lightning-fast Minecraft launcher';
 	}
 
 	.topbar {
+		position: sticky;
+		top: 0;
+		z-index: 20;
 		height: 4rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
 		padding: 0 1.5rem;
+		background: transparent;
+		border-bottom: 1px solid transparent;
+		transition: background-color 0.2s ease, border-color 0.2s ease;
+	}
+
+	.topbar.is-scrolled {
 		background: var(--sl-color-bg-nav);
-		border-bottom: 1px solid var(--sl-color-hairline);
+		border-bottom-color: var(--sl-color-hairline);
 	}
 
 	.topbar-brand {
