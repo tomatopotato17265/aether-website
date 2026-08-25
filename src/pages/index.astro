@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import '../styles/custom.css';
 import TopBarContent from '../components/TopBarContent.astro';
+import appScreenshot from '../assets/hero.png';
 
 const title = 'Aether';
 const description = 'A minimal, extensible, lightning-fast Minecraft launcher';
@@ -19,14 +21,22 @@ const description = 'A minimal, extensible, lightning-fast Minecraft launcher';
 			<TopBarContent />
 		</header>
 		<main class="hero">
-			<h1 class="hero-title">A launcher that exists to launch Minecraft, and nothing more</h1>
-			<div class="hero-actions">
-				<a class="hero-button hero-button-primary" href="https://github.com/wayback09/Aether/releases">
-					Download Aether
-				</a>
-				<a class="hero-button hero-button-secondary" href="https://github.com/wayback09/Aether">
-					View on GitHub
-				</a>
+			<div class="hero-content">
+				<h1 class="hero-title">A launcher that exists to launch Minecraft, and nothing more</h1>
+				<p class="hero-tagline">
+					Every feature that is not essential to launching the game, like downloading mods,
+					managing servers, or viewing logs, is implemented as an extension. By keeping the
+					core launcher intentionally minimal, Aether remains fast and free
+					from bloat.
+				</p>
+				<div class="hero-actions">
+					<a class="hero-button hero-button-primary" href="https://github.com/wayback09/Aether/releases">
+						Download Aether
+					</a>
+				</div>
+			</div>
+			<div class="hero-image">
+				<Image src={appScreenshot} alt="" width={1000} loading="eager" fetchpriority="high" />
 			</div>
 		</main>
 	</body>
@@ -72,21 +82,49 @@ const description = 'A minimal, extensible, lightning-fast Minecraft launcher';
 	.hero {
 		min-height: calc(100vh - 4rem);
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: 1.25rem;
-		max-width: 40rem;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 3rem;
+		max-width: 75rem;
 		margin: 0 auto;
 		padding: 1.5rem;
 	}
 
-	.hero-eyebrow {
-		margin: 0;
-		font-weight: 700;
-		font-size: 0.875rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--sl-color-accent-high);
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		text-align: left;
+		gap: 1.25rem;
+		max-width: 32rem;
+		flex-shrink: 0;
+	}
+
+	.hero-image {
+		flex: 1;
+		min-width: 0;
+		display: flex;
+		justify-content: center;
+	}
+
+	.hero-image :global(img) {
+		width: 100%;
+		height: auto;
+		box-shadow: 0 50px 100px -20px hsla(0, 0%, 0%, 0.65), 0 30px 60px -30px hsla(0, 0%, 0%, 0.5);
+	}
+
+	@media (max-width: 64rem) {
+		.hero {
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+		}
+
+		.hero-content {
+			align-items: center;
+			text-align: center;
+		}
 	}
 
 	.hero-title {
@@ -99,7 +137,7 @@ const description = 'A minimal, extensible, lightning-fast Minecraft launcher';
 
 	.hero-tagline {
 		margin: 0;
-		max-width: 34rem;
+		max-width: 32rem;
 		font-size: 1.125rem;
 		line-height: 1.6;
 		color: var(--sl-color-gray-2);
