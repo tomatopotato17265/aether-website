@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+	--sl-font: 'Inter', var(--sl-font-system);
+
+	/* Dark mode (default) */
+	--sl-color-black: hsl(0, 0%, 4%);
+	--sl-color-bg: hsl(0, 0%, 5%);
+	--sl-color-bg-nav: hsl(0, 0%, 7%);
+	--sl-color-bg-sidebar: hsl(0, 0%, 7%);
+	--sl-color-bg-inline-code: hsl(0, 0%, 12%);
+	--sl-color-hairline: hsl(0, 0%, 16%);
+	--sl-color-hairline-light: hsl(0, 0%, 22%);
+	--sl-color-hairline-shade: hsl(0, 0%, 0%);
+
+	--sl-color-gray-1: hsl(0, 0%, 95%);
+	--sl-color-gray-2: hsl(0, 0%, 80%);
+	--sl-color-gray-3: hsl(0, 0%, 62%);
+	--sl-color-gray-4: hsl(0, 0%, 42%);
+	--sl-color-gray-5: hsl(0, 0%, 26%);
+	--sl-color-gray-6: hsl(0, 0%, 14%);
+
+	--sl-hue-accent: 221;
+	--sl-color-accent-low: hsl(var(--sl-hue-accent), 40%, 14%);
+	--sl-color-accent: rgb(78, 128, 238);
+	--sl-color-accent-high: hsl(var(--sl-hue-accent), 40%, 95%);
+
+	/* Secondary brand accent, used for card highlights alongside teal. */
+	--aether-accent-pink: hsl(330, 78%, 58%);
+}
+
+:root[data-theme='light'] {
+	--sl-color-white: hsl(0, 0%, 8%);
+	--sl-color-black: hsl(0, 0%, 100%);
+	--sl-color-bg: hsl(0, 0%, 100%);
+	--sl-color-bg-nav: hsl(0, 0%, 98%);
+	--sl-color-bg-sidebar: hsl(0, 0%, 100%);
+	--sl-color-bg-inline-code: hsl(0, 0%, 94%);
+	--sl-color-hairline: hsl(0, 0%, 90%);
+	--sl-color-hairline-light: hsl(0, 0%, 90%);
+	--sl-color-hairline-shade: hsl(0, 0%, 90%);
+
+	--sl-color-accent-high: hsl(var(--sl-hue-accent), 60%, 34%);
+	--sl-color-accent: hsl(var(--sl-hue-accent), 70%, 56%);
+	--sl-color-accent-low: hsl(var(--sl-hue-accent), 70%, 94%);
+}
+
+/* Tighter, bolder headings to match the launcher's UI type. */
+h1,
+h2,
+h3,
+h4,
+.site-title {
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+
+/* Rounded, bordered surfaces instead of Starlight's default flat panels. */
+.sidebar-pane,
+.right-sidebar-panel {
+	border-color: var(--sl-color-hairline);
+}
+
+a:not([class]) {
+	color: var(--sl-color-accent-high);
+}
+
+/* Solid accent pill for the active sidebar link, closer to the app's UI. */
+.sidebar-content a[aria-current='page'] {
+	background-color: var(--sl-color-accent);
+	color: var(--sl-color-white);
+}
