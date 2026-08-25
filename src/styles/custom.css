@@ -3,7 +3,6 @@
 :root {
 	--sl-font: 'Inter', var(--sl-font-system);
 
-	/* Dark mode (default) */
 	--sl-color-white: hsl(0, 0%, 100%);
 	--sl-color-black: hsl(0, 0%, 4%);
 	--sl-color-bg: hsl(0, 0%, 5%);
@@ -28,22 +27,6 @@
 
 	/* secondary  accent */
 	--aether-accent-pink: hsl(330, 78%, 58%);
-}
-
-:root[data-theme='light'] {
-	--sl-color-white: hsl(0, 0%, 8%);
-	--sl-color-black: hsl(0, 0%, 100%);
-	--sl-color-bg: hsl(0, 0%, 100%);
-	--sl-color-bg-nav: hsl(0, 0%, 98%);
-	--sl-color-bg-sidebar: hsl(0, 0%, 100%);
-	--sl-color-bg-inline-code: hsl(0, 0%, 94%);
-	--sl-color-hairline: hsl(0, 0%, 90%);
-	--sl-color-hairline-light: hsl(0, 0%, 90%);
-	--sl-color-hairline-shade: hsl(0, 0%, 90%);
-
-	--sl-color-accent-high: hsl(var(--sl-hue-accent), 60%, 34%);
-	--sl-color-accent: hsl(var(--sl-hue-accent), 70%, 56%);
-	--sl-color-accent-low: hsl(var(--sl-hue-accent), 70%, 94%);
 }
 
 h1,

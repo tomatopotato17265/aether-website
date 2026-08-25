@@ -9,6 +9,18 @@ export default defineConfig({
 			title: 'Aether',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/wayback09/Aether' }],
 			customCss: ['./src/styles/custom.css'],
+			components: {
+				Header: './src/components/StarlightHeader.astro',
+				MobileMenuFooter: './src/components/StarlightMobileMenuFooter.astro',
+			},
+			head: [
+				{
+					// Aether is dark-only. Pin the stored preference before Starlight's
+					// ThemeProvider script reads it, so it always resolves to dark.
+					tag: 'script',
+					content: "localStorage.setItem('starlight-theme', 'dark');",
+				},
+			],
 			sidebar: [
 				{
 					label: 'Guides',
