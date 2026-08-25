@@ -4,6 +4,7 @@
 	--sl-font: 'Inter', var(--sl-font-system);
 
 	/* Dark mode (default) */
+	--sl-color-white: hsl(0, 0%, 100%);
 	--sl-color-black: hsl(0, 0%, 4%);
 	--sl-color-bg: hsl(0, 0%, 5%);
 	--sl-color-bg-nav: hsl(0, 0%, 7%);
@@ -25,7 +26,7 @@
 	--sl-color-accent: rgb(78, 128, 238);
 	--sl-color-accent-high: hsl(var(--sl-hue-accent), 40%, 95%);
 
-	/* Secondary brand accent, used for card highlights alongside teal. */
+	/* secondary  accent */
 	--aether-accent-pink: hsl(330, 78%, 58%);
 }
 
@@ -45,7 +46,6 @@
 	--sl-color-accent-low: hsl(var(--sl-hue-accent), 70%, 94%);
 }
 
-/* Tighter, bolder headings to match the launcher's UI type. */
 h1,
 h2,
 h3,
@@ -55,7 +55,6 @@ h4,
 	letter-spacing: -0.01em;
 }
 
-/* Rounded, bordered surfaces instead of Starlight's default flat panels. */
 .sidebar-pane,
 .right-sidebar-panel {
 	border-color: var(--sl-color-hairline);
@@ -65,7 +64,6 @@ a:not([class]) {
 	color: var(--sl-color-accent-high);
 }
 
-/* Solid accent pill for the active sidebar link, closer to the app's UI. */
 .sidebar-content a[aria-current='page'] {
 	background-color: var(--sl-color-accent);
 	color: var(--sl-color-white);
