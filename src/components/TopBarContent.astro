@@ -8,8 +8,12 @@ const { wikiHref = '/guides/example/' } = Astro.props;
 
 <a class="topbar-brand" href="/">Aether</a>
 <div class="topbar-links">
+	<div class="topbar-search">
+		<slot />
+	</div>
+	<a class="topbar-link" href="#">About</a>
+	<a class="topbar-link" href="#">Extensions</a>
 	<a class="topbar-link" href={wikiHref}>Wiki</a>
-	<slot />
 	<a class="topbar-icon" href="https://discord.gg/hyPWTs9FfM" aria-label="Discord" target="_blank" rel="noopener noreferrer">
 		<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
 			<path
@@ -46,6 +50,20 @@ const { wikiHref = '/guides/example/' } = Astro.props;
 		display: flex;
 		align-items: center;
 		gap: 1.75rem;
+	}
+
+	.topbar-search {
+		display: flex;
+		width: 20rem;
+	}
+
+	.topbar-search:empty {
+		display: none;
+	}
+
+	.topbar-search :global(button[data-open-modal]) {
+		width: 100%;
+		max-width: none;
 	}
 
 	.topbar-link {
