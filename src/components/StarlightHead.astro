@@ -1,0 +1,17 @@
+---
+import logo from '../assets/logo.png';
+
+const { head } = Astro.locals.starlightRoute;
+const filteredHead = head.filter((entry) => {
+	if (entry.tag !== 'link' && entry.tag !== 'meta') return true;
+	const rel = entry.attrs?.rel;
+	const name = entry.attrs?.name;
+	if (rel && rel.includes('icon')) return false;
+	if (name === 'twitter:card') return false;
+	return true;
+});
+---
+
+<link rel="icon" type="image/png" href={logo.src} />
+<meta property="og:image" content={logo.src} />
+{filteredHead.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}

@@ -8,9 +8,9 @@ export default defineConfig({
 		starlight({
 			title: 'Aether',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/wayback09/Aether' }],
-			favicon: '/favicon.png',
 			customCss: ['./src/styles/custom.css'],
 			components: {
+				Head: './src/components/StarlightHead.astro',
 				Header: './src/components/StarlightHeader.astro',
 				MobileMenuFooter: './src/components/StarlightMobileMenuFooter.astro',
 			},

@@ -6,6 +6,7 @@ import appScreenshot from '../assets/hero.png';
 import appleIcon from '../assets/apple.svg?url';
 import linuxIcon from '../assets/linux.svg?url';
 import windowsIcon from '../assets/windows.svg?url';
+import logo from '../assets/logo.png';
 ---
 
 <html lang="en">
@@ -13,8 +14,13 @@ import windowsIcon from '../assets/windows.svg?url';
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="A minimal, extensible, lightning-fast Minecraft launcher" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="icon" type="image/png" href={logo.src} />
 		<title>Aether</title>
+
+		<meta property="og:title" content="Aether" />
+		<meta property="og:description" content="A minimal, extensible, lightning-fast Minecraft launcher" />
+		<meta property="og:image" content={logo.src} />
+		<meta property="og:type" content="website" />
 	</head>
 	<body>
 		<header class="topbar">
