@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://aether-website-2uc.pages.dev',
 	integrations: [
 		starlight({
 			title: 'Aether',

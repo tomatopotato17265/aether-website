@@ -1,6 +1,7 @@
 ---
 import logo from '../assets/logo.png';
 
+const ogImageUrl = new URL(logo.src, Astro.site);
 const { head } = Astro.locals.starlightRoute;
 const filteredHead = head.filter((entry) => {
 	if (entry.tag !== 'link' && entry.tag !== 'meta') return true;
@@ -13,5 +14,5 @@ const filteredHead = head.filter((entry) => {
 ---
 
 <link rel="icon" type="image/png" href={logo.src} />
-<meta property="og:image" content={logo.src} />
+<meta property="og:image" content={ogImageUrl} />
 {filteredHead.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}

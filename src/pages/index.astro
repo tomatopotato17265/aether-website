@@ -7,6 +7,8 @@ import appleIcon from '../assets/apple.svg?url';
 import linuxIcon from '../assets/linux.svg?url';
 import windowsIcon from '../assets/windows.svg?url';
 import logo from '../assets/logo.png';
+
+const ogImageUrl = new URL(logo.src, Astro.site);
 ---
 
 <html lang="en">
@@ -19,7 +21,7 @@ import logo from '../assets/logo.png';
 
 		<meta property="og:title" content="Aether" />
 		<meta property="og:description" content="A minimal, extensible, lightning-fast Minecraft launcher" />
-		<meta property="og:image" content={logo.src} />
+		<meta property="og:image" content={ogImageUrl} />
 		<meta property="og:type" content="website" />
 	</head>
 	<body>
