@@ -3,12 +3,16 @@ import { Image } from 'astro:assets';
 import '../styles/custom.css';
 import TopBarContent from '../components/TopBarContent.astro';
 import appScreenshot from '../assets/hero.png';
+import appleIcon from '../assets/apple.svg?url';
+import linuxIcon from '../assets/linux.svg?url';
+import windowsIcon from '../assets/windows.svg?url';
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="A minimal, extensible, lightning-fast Minecraft launcher" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<title>Aether</title>
 	</head>
@@ -32,7 +36,8 @@ import appScreenshot from '../assets/hero.png';
 							id="download-button"
 							href="https://github.com/wayback09/Aether/releases"
 						>
-							Download Aether
+							<span class="download-icon" id="download-icon" hidden></span>
+							<span class="download-label" id="download-label">Download</span>
 						</a>
 						<button
 							type="button"
@@ -58,7 +63,7 @@ import appScreenshot from '../assets/hero.png';
 	</body>
 </html>
 
-<script>
+<script define:vars={{ appleIcon, linuxIcon, windowsIcon }}>
 	const header = document.querySelector('.topbar');
 	const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 0);
 	onScroll();
@@ -86,24 +91,35 @@ import appScreenshot from '../assets/hero.png';
 		windows: {
 			label: 'Windows',
 			file: 'Aether-windows-amd64-installer.exe',
+			fileLabel: 'Installer (.exe)',
 			altLabel: 'Windows (Portable)',
 			altFile: 'Aether-windows-amd64.exe',
 		},
 		mac: {
 			label: 'macOS',
 			file: 'Aether-macos-arm64.dmg',
+			fileLabel: 'Apple Silicon (.dmg)',
 			altLabel: 'macOS (Intel)',
 			altFile: 'Aether-macos-amd64.dmg',
 		},
 		linux: {
 			label: 'Linux',
 			file: 'Aether-linux-amd64.AppImage',
+			fileLabel: 'AppImage',
 			altLabel: 'Linux (.tar.gz)',
 			altFile: 'Aether-linux-amd64.tar.gz',
 		},
 	};
 
+	const ICONS = {
+		windows: windowsIcon,
+		mac: appleIcon,
+		linux: linuxIcon,
+	};
+
 	const downloadButton = document.querySelector('#download-button');
+	const downloadIcon = document.querySelector('#download-icon');
+	const downloadLabel = document.querySelector('#download-label');
 	const downloadToggle = document.querySelector('#download-toggle');
 	const downloadMenu = document.querySelector('#download-menu');
 	const downloadSplit = document.querySelector('#download-split');
@@ -118,13 +134,26 @@ import appScreenshot from '../assets/hero.png';
 		return item;
 	}
 
+	function menuHeader(label) {
+		const header = document.createElement('div');
+		header.className = 'download-menu-header';
+		header.textContent = label;
+		return header;
+	}
+
 	if (downloadButton && !platform) {
-		downloadButton.textContent = 'Available on Desktop';
+		if (downloadLabel) downloadLabel.textContent = 'Available on Desktop';
 		downloadButton.classList.add('is-disabled');
 		downloadButton.setAttribute('aria-disabled', 'true');
 		downloadButton.removeAttribute('href');
 		downloadButton.addEventListener('click', (event) => event.preventDefault());
 	} else if (downloadButton && downloadToggle && downloadMenu && downloadSplit) {
+		if (downloadIcon) {
+			downloadIcon.style.maskImage = `url("${ICONS[platform]}")`;
+			downloadIcon.style.webkitMaskImage = `url("${ICONS[platform]}")`;
+			downloadIcon.hidden = false;
+		}
+
 		fetch('https://api.github.com/repos/wayback09/Aether/releases', {
 			headers: { Accept: 'application/vnd.github+json' },
 		})
@@ -152,7 +181,9 @@ import appScreenshot from '../assets/hero.png';
 					if (key === platform) continue;
 					const other = PLATFORMS[key];
 					const otherUrl = assetUrls[other.file];
-					if (otherUrl) downloadMenu.appendChild(menuItem(other.label, otherUrl));
+					if (!otherUrl) continue;
+					downloadMenu.appendChild(menuHeader(other.label));
+					downloadMenu.appendChild(menuItem(other.fileLabel, otherUrl));
 				}
 
 				if (downloadMenu.children.length === 0) return;
@@ -317,6 +348,10 @@ import appScreenshot from '../assets/hero.png';
 		filter: brightness(1.1);
 	}
 
+	.download-toggle[hidden] {
+		display: none;
+	}
+
 	.download-menu {
 		position: absolute;
 		top: calc(100% + 0.5rem);
@@ -345,7 +380,8 @@ import appScreenshot from '../assets/hero.png';
 		visibility: visible;
 	}
 
-	.download-menu-item {
+	:global(.download-menu-item) {
+		display: block;
 		padding: 0.5rem 0.625rem;
 		border-radius: 6px;
 		font-size: 0.875rem;
@@ -355,8 +391,17 @@ import appScreenshot from '../assets/hero.png';
 		white-space: nowrap;
 	}
 
-	.download-menu-item:hover {
+	:global(.download-menu-item:hover) {
 		background: var(--sl-color-gray-6);
+	}
+
+	:global(.download-menu-header) {
+		margin: 0.375rem -0.375rem 0;
+		padding: 0.375rem 0.625rem 0.5rem;
+		font-size: 0.8125rem;
+		font-weight: 400;
+		color: var(--sl-color-gray-3);
+		border-bottom: 1px solid var(--sl-color-hairline);
 	}
 
 	.hero-button {
@@ -386,5 +431,23 @@ import appScreenshot from '../assets/hero.png';
 		background: transparent;
 		color: var(--sl-color-white);
 		border-color: var(--sl-color-hairline-light);
+	}
+
+	.download-icon {
+		display: inline-block;
+		width: 1.05rem;
+		height: 1.05rem;
+		margin-right: 0.625rem;
+		background-color: currentColor;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+	}
+
+	.download-icon[hidden] {
+		display: none;
 	}
 </style>
