@@ -25,15 +25,16 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'Welcome',
+					items: [{ label: 'Welcome', slug: 'welcome' }],
 				},
 				{
-					label: 'Reference',
-					items: [{ autogenerate: { directory: 'reference' } }],
+					label: 'Developer',
+					items: [{ autogenerate: { directory: 'developer' } }],
+				},
+				{
+					label: 'Themes',
+					items: [{ autogenerate: { directory: 'themes' } }],
 				},
 			],
 		}),
