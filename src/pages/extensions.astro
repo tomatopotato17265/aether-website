@@ -1,0 +1,162 @@
+---
+import TopBar from '../components/svelte/TopBar.svelte';
+import logo from '../assets/logo.png';
+import '../styles/custom.css';
+
+const ogImageUrl = new URL(logo.src, Astro.site);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Browse extensions for Aether" />
+		<link rel="icon" type="image/png" href={logo.src} />
+		<title>Extensions · Aether</title>
+
+		<meta property="og:title" content="Extensions · Aether" />
+		<meta property="og:description" content="Browse extensions for Aether" />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:type" content="website" />
+	</head>
+	<body>
+		<TopBar client:load />
+		<div class="app">
+			<aside class="sidebar">
+				<nav class="nav">
+					<a class="nav-item is-active" href="/extensions/" aria-current="page">
+						<svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L3 13V5a2 2 0 0 1 2-2h8l7.59 7.59a2 2 0 0 1 0 2.82Z"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.8"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<circle cx="7.5" cy="7.5" r="1.6" fill="currentColor" />
+						</svg>
+						<span>Extensions</span>
+					</a>
+					<a class="nav-item" href="#">
+						<svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M12 3a9 9 0 0 0 0 18c1.1 0 2-.9 2-2 0-.52-.2-1-.53-1.36-.32-.35-.5-.8-.5-1.28 0-1.03.84-1.86 1.87-1.86H16a5 5 0 0 0 5-5c0-3.87-4.03-7-9-7Z"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.8"
+								stroke-linejoin="round"
+							/>
+							<circle cx="7.5" cy="10.5" r="1.2" fill="currentColor" />
+							<circle cx="12" cy="7.5" r="1.2" fill="currentColor" />
+							<circle cx="16.5" cy="10.5" r="1.2" fill="currentColor" />
+						</svg>
+						<span>Themes</span>
+					</a>
+				</nav>
+			</aside>
+
+			<main class="content">
+				<header class="content-head">
+					<h1>Extensions</h1>
+				</header>
+
+				<div class="empty">
+					<p>Nothing here yet.</p>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
+
+<style>
+	:global(html),
+	:global(body) {
+		margin: 0;
+		height: 100%;
+		background: var(--sl-color-bg);
+		color: var(--sl-color-white);
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	}
+
+	.app {
+		display: flex;
+		min-height: calc(100vh - 4rem);
+	}
+
+	.sidebar {
+		flex: 0 0 264px;
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+		padding: 1.5rem 1rem;
+		background: var(--sl-color-bg-sidebar);
+		border-right: 1px solid var(--sl-color-hairline);
+	}
+
+	.nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.nav-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.5rem 0.75rem;
+		border-radius: 8px;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		color: var(--sl-color-gray-3);
+		text-decoration: none;
+		transition: background-color 0.15s ease, color 0.15s ease;
+	}
+
+	.nav-item:hover {
+		color: var(--sl-color-white);
+		background: var(--sl-color-bg-inline-code);
+	}
+
+	.nav-item.is-active {
+		color: var(--sl-color-white);
+		background: var(--sl-color-bg-inline-code);
+	}
+
+	.nav-icon {
+		width: 20px;
+		height: 20px;
+		flex: 0 0 20px;
+	}
+
+	.content {
+		flex: 1;
+		padding: 2.5rem 3rem;
+	}
+
+	.content-head h1 {
+		margin: 0;
+		font-size: 2rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+
+	.empty {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 40vh;
+		color: var(--sl-color-gray-4);
+		font-size: 0.9375rem;
+	}
+
+	@media (max-width: 40rem) {
+		.sidebar {
+			flex-basis: 200px;
+		}
+
+		.content {
+			padding: 2rem 1.5rem;
+		}
+	}
+</style>

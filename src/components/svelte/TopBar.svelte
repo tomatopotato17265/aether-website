@@ -17,7 +17,7 @@
 <header class="topbar" class:is-scrolled={scrolled}>
 	<a class="topbar-brand" href="/">Aether</a>
 	<div class="topbar-links">
-		<a class="topbar-link" href="#">Extensions</a>
+		<a class="topbar-link" href="/extensions/">Extensions</a>
 		<a class="topbar-link" href={wikiHref}>Wiki</a>
 		<a
 			class="topbar-icon"
