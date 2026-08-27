@@ -68,6 +68,29 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 				<Image src={appScreenshot} alt="" width={1000} loading="eager" fetchpriority="high" />
 			</div>
 		</main>
+		<section class="features">
+			<h2 class="features-title">Everything you could ever ask for</h2>
+			<ul class="features-list">
+				{
+					['Blazing Fast', 'Customizable UI', 'Extensible Architecture', 'Capability-Based Extensions'].map(
+						(term) => (
+							<li class="features-item">
+								<svg class="features-check" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+									<path
+										d="M4 10.5l3.5 3.5L16 6"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+								{term}
+							</li>
+						)
+					)
+				}
+			</ul>
+		</section>
 	</body>
 </html>
 
@@ -457,5 +480,44 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 
 	.download-icon[hidden] {
 		display: none;
+	}
+
+	.features {
+		max-width: 75rem;
+		margin: 0 auto;
+		padding: 5rem 1.5rem 7rem;
+	}
+
+	.features-title {
+		margin: 0 0 1.75rem;
+		text-align: left;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		font-size: clamp(2.25rem, 5vw, 3.5rem);
+	}
+
+	.features-list {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.125rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.features-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		font-weight: 600;
+		font-size: 1.375rem;
+	}
+
+	.features-check {
+		flex-shrink: 0;
+		width: 24px;
+		height: 24px;
+		color: var(--sl-color-accent);
 	}
 </style>

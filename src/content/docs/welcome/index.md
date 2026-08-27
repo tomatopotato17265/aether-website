@@ -9,7 +9,7 @@ free from bloat.
 
 This wiki is split into a few sections:
 
-- **Developer** — guides and reference material for building extensions and working with Aether's codebase.
-- **Themes** — how to install, configure, and create themes for the launcher.
+- **Developer**: guides and reference material for building extensions and working with Aether's codebase.
+- **Themes**: how to install, configure, and create themes for the launcher.
 
 Use the search bar at the top of the page to jump straight to what you're looking for.
