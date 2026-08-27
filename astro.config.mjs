@@ -1,11 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://aether-website-2uc.pages.dev',
 	integrations: [
+		svelte(),
 		starlight({
 			title: 'Aether',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/wayback09/Aether' }],
