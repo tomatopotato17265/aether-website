@@ -1,23 +1,27 @@
-# Starlight Starter Kit: Basics
+# website
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+This is the website for [Aether](https://github.com/wayback09/Aether), a modern, lightweight, and highly extensible Minecraft launcher.
+
+## Contents
+
+This site contains many pages and directories:
+
+- A homepage to display Aether's main features and provide downloads
+- An extensive wiki, containing documentation on how to use Aether, as well as information for extension developers and theme creators
+- A rich extension marketplace, containing many extensions to enhance Aether the way *you* want
+
+## Development and Contribution
+
+Please look over the [contribution guidelines](CONTRIBUTING.md) for more information on contributing to this website.
+
+This website was made with [Astro](https://astro.build), and referenced the [Starlight Template](https://starlight.astro.build). It is organized like so:
 
 ```
-npm create astro@latest -- --template starlight
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
 ├── public/
 ├── src/
 │   ├── assets/
 │   ├── content/
+│       ├── pages/
 │   │   └── docs/
 │   └── content.config.ts
 ├── astro.config.mjs
@@ -25,15 +29,9 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 └── tsconfig.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+Pages are stored in the `src/content/docs` directory; similarly, docs are stored in the `src/content/docs/` directory, as `.md` files. Each file is exposed as a route based on its file name. Images can be added to `src/assets/` and embedded in Markdown with a relative link.
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+The following commands are applicable for this project. They are run from the root of the project, in a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -43,7 +41,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
