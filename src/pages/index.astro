@@ -247,6 +247,17 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 			if (event.key === 'Escape') closeMenu();
 		});
 	}
+
+	const featureItems = document.querySelectorAll('.features-item');
+	if (featureItems.length > 0) {
+		let activeIndex = 0;
+		featureItems[activeIndex].classList.add('is-active');
+		setInterval(() => {
+			featureItems[activeIndex].classList.remove('is-active');
+			activeIndex = (activeIndex + 1) % featureItems.length;
+			featureItems[activeIndex].classList.add('is-active');
+		}, 10000);
+	}
 </script>
 
 <style>
@@ -500,7 +511,7 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 1.125rem;
+		gap: 1.75rem;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -512,12 +523,23 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 		gap: 0.75rem;
 		font-weight: 600;
 		font-size: 1.375rem;
+		color: var(--sl-color-gray-4);
+		transition: color 0.4s ease;
+	}
+
+	.features-item.is-active {
+		color: var(--sl-color-white);
 	}
 
 	.features-check {
 		flex-shrink: 0;
 		width: 24px;
 		height: 24px;
+		color: var(--sl-color-gray-5);
+		transition: color 0.4s ease;
+	}
+
+	.features-item.is-active .features-check {
 		color: var(--sl-color-accent);
 	}
 </style>
