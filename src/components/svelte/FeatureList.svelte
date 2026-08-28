@@ -3,7 +3,12 @@
 
 	let activeIndex = $state(0);
 
+	function selectItem(index) {
+		activeIndex = index;
+	}
+
 	$effect(() => {
+		activeIndex;
 		const timer = setInterval(() => {
 			activeIndex = (activeIndex + 1) % FEATURES.length;
 		}, 10000);
@@ -16,16 +21,18 @@
 	<ul class="features-list">
 		{#each FEATURES as term, index (term)}
 			<li class="features-item" class:is-active={index === activeIndex}>
-				<svg class="features-check" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-					<path
-						d="M4 10.5l3.5 3.5L16 6"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					/>
-				</svg>
-				{term}
+				<button type="button" class="features-item-button" onclick={() => selectItem(index)}>
+					<svg class="features-check" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+						<path
+							d="M4 10.5l3.5 3.5L16 6"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+					{term}
+				</button>
 			</li>
 		{/each}
 	</ul>
@@ -56,17 +63,23 @@
 		list-style: none;
 	}
 
-	.features-item {
+	.features-item-button {
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
+		font: inherit;
 		font-weight: 600;
 		font-size: 1.375rem;
 		color: var(--sl-color-gray-4);
+		background: none;
+		border: none;
+		padding: 0;
+		margin: 0;
+		cursor: pointer;
 		transition: color 0.4s ease;
 	}
 
-	.features-item.is-active {
+	.features-item.is-active .features-item-button {
 		color: var(--sl-color-white);
 	}
 
