@@ -10,12 +10,12 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Browse extensions for Aether" />
+		<meta name="description" content="Browse extensions and themes for Aether" />
 		<link rel="icon" type="image/png" href={logo.src} />
-		<title>Extensions · Aether</title>
+		<title>Marketplace · Aether</title>
 
-		<meta property="og:title" content="Extensions · Aether" />
-		<meta property="og:description" content="Browse extensions for Aether" />
+		<meta property="og:title" content="Marketplace · Aether" />
+		<meta property="og:description" content="Browse extensions and themes for Aether" />
 		<meta property="og:image" content={ogImageUrl} />
 		<meta property="og:type" content="website" />
 	</head>
@@ -24,7 +24,7 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 		<div class="app">
 			<aside class="sidebar">
 				<nav class="nav">
-					<a class="nav-item is-active" href="/extensions/" aria-current="page">
+					<a class="nav-item is-active" href="/marketplace/" aria-current="page">
 						<svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
 							<path
 								d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L3 13V5a2 2 0 0 1 2-2h8l7.59 7.59a2 2 0 0 1 0 2.82Z"
@@ -58,7 +58,7 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 
 			<main class="content">
 				<header class="content-head">
-					<h1>Extensions</h1>
+					<h1>Marketplace</h1>
 				</header>
 
 				<div class="empty">
