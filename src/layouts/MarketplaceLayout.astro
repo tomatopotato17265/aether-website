@@ -1,4 +1,5 @@
 ---
+import Search from 'virtual:starlight/components/Search';
 import TopBar from '../components/svelte/TopBar.svelte';
 import logo from '../assets/logo.png';
 import '../styles/custom.css';
@@ -29,7 +30,9 @@ const ogImageUrl = new URL(logo.src, Astro.site);
 		<meta property="og:type" content="website" />
 	</head>
 	<body>
-		<TopBar client:load />
+		<TopBar client:load>
+			<Search />
+		</TopBar>
 		<div class="app">
 			<aside class="sidebar">
 				<nav class="nav">

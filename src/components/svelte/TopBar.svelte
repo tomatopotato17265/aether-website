@@ -1,5 +1,5 @@
 <script>
-	let { wikiHref = '/welcome/' } = $props();
+	let { wikiHref = '/welcome/', children } = $props();
 
 	let scrolled = $state(false);
 
@@ -17,6 +17,9 @@
 <header class="topbar" class:is-scrolled={scrolled}>
 	<a class="topbar-brand" href="/">Aether</a>
 	<div class="topbar-links">
+		<div class="topbar-search">
+			{@render children?.()}
+		</div>
 		<a class="topbar-link" href="/marketplace/">Marketplace</a>
 		<a class="topbar-link" href={wikiHref}>Wiki</a>
 		<a
@@ -88,6 +91,20 @@
 		display: flex;
 		align-items: center;
 		gap: 1.75rem;
+	}
+
+	.topbar-search {
+		display: flex;
+		width: 20rem;
+	}
+
+	.topbar-search:empty {
+		display: none;
+	}
+
+	.topbar-search :global(button[data-open-modal]) {
+		width: 100%;
+		max-width: none;
 	}
 
 	.topbar-link {
