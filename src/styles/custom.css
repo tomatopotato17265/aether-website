@@ -55,3 +55,7 @@ a:not([class]) {
 starlight-theme-select {
 	display: none;
 }
+
+button[data-open-modal] kbd {
+	display: none !important;
+}
