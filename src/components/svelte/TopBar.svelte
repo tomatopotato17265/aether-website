@@ -95,7 +95,6 @@
 
 	.topbar-search {
 		display: flex;
-		width: 20rem;
 	}
 
 	.topbar-search:empty {
@@ -103,8 +102,17 @@
 	}
 
 	.topbar-search :global(button[data-open-modal]) {
-		width: 100%;
 		max-width: none;
+	}
+
+	@media (min-width: 50rem) {
+		.topbar-search {
+			width: 20rem;
+		}
+
+		.topbar-search :global(button[data-open-modal]) {
+			width: 100%;
+		}
 	}
 
 	.topbar-link {

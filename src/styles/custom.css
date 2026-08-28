@@ -27,6 +27,12 @@
 
 	/* secondary  accent */
 	--aether-accent-pink: hsl(330, 78%, 58%);
+
+	/* Matches the fixed height of TopBar.svelte, which now renders as
+	   Starlight's own header (see below) — pinned instead of the default
+	   3.5rem/4rem responsive split, so the sidebar/menu-button offsets that
+	   read this variable line up with the actual header height. */
+	--sl-nav-height: 4rem;
 }
 
 h1,
@@ -58,4 +64,21 @@ starlight-theme-select {
 
 button[data-open-modal] kbd {
 	display: none !important;
+}
+
+/* Starlight's PageFrame wraps <Header> in its own fixed, opaque bar. Our
+   Header override renders TopBar.svelte instead, which is already a
+   sticky, self-positioning, scroll-aware header (the same component used
+   on the Home page and Marketplace) — so this wrapper is flattened into a
+   plain in-flow container and just gets out of the way. */
+.header {
+	position: static;
+	height: auto;
+	padding: 0;
+	background: transparent;
+	border-bottom: none;
+}
+
+.main-frame {
+	padding-top: var(--sl-mobile-toc-height);
 }

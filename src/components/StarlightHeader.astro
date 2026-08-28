@@ -1,21 +1,8 @@
 ---
 import Search from 'virtual:starlight/components/Search';
-import TopBarContent from './TopBarContent.astro';
+import TopBar from './svelte/TopBar.svelte';
 ---
 
-<div class="wiki-topbar">
-	<TopBarContent>
-		<Search />
-	</TopBarContent>
-</div>
-
-<style>
-	.wiki-topbar {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<TopBar client:load>
+	<Search />
+</TopBar>
