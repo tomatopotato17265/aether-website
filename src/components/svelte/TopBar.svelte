@@ -69,13 +69,11 @@
 		justify-content: space-between;
 		gap: 1rem;
 		padding: 0 1.5rem;
-		background: transparent;
+		background: var(--sl-color-bg-nav);
 		border-bottom: 1px solid transparent;
-		transition: background-color 0.2s ease, border-color 0.2s ease;
+		transition: border-color 0.2s ease;
 	}
 
-	.topbar.is-scrolled {
-		background: var(--sl-color-bg-nav);
 		border-bottom-color: var(--sl-color-hairline);
 	}
 
