@@ -24,14 +24,21 @@
 	--sl-color-accent-low: hsl(var(--sl-hue-accent), 40%, 14%);
 	--sl-color-accent: rgb(78, 128, 238);
 	--sl-color-accent-high: hsl(var(--sl-hue-accent), 40%, 95%);
-
-	/* secondary  accent */
 	--aether-accent-pink: hsl(330, 78%, 58%);
 
-	/* Matches the fixed height of TopBar.svelte, which now renders as
-	   Starlight's own header (see below) — pinned instead of the default
-	   3.5rem/4rem responsive split, so the sidebar/menu-button offsets that
-	   read this variable line up with the actual header height. */
+	--sl-text-2xs: 0.75rem; /* 12px */
+	--sl-text-xs: 0.8125rem; /* 13px */
+	--sl-text-sm: 0.875rem; /* 14px */
+	--sl-text-base: 1rem; /* 16px */
+	--sl-text-lg: 1.125rem; /* 18px */
+	--sl-text-xl: 1.25rem; /* 20px */
+	--sl-text-2xl: 1.5rem; /* 24px */
+	--sl-text-3xl: 1.8125rem; /* 29px */
+	--sl-text-4xl: 2.1875rem; /* 35px */
+	--sl-text-5xl: 2.625rem; /* 42px */
+	--sl-text-6xl: 4rem; /* 64px */
+	--sl-line-height: 1.75;
+	--sl-line-height-headings: 1.2;
 	--sl-nav-height: 4rem;
 }
 
@@ -42,6 +49,7 @@ h4,
 .site-title {
 	font-weight: 700;
 	letter-spacing: -0.01em;
+	line-height: var(--sl-line-height-headings);
 }
 
 .sidebar-pane,
@@ -66,11 +74,6 @@ button[data-open-modal] kbd {
 	display: none !important;
 }
 
-/* Starlight's PageFrame wraps <Header> in its own fixed, opaque bar. Our
-   Header override renders TopBar.svelte instead, which is already a
-   sticky, self-positioning, scroll-aware header (the same component used
-   on the Home page and Marketplace) — so this wrapper is flattened into a
-   plain in-flow container and just gets out of the way. */
 .header {
 	position: static;
 	height: auto;
@@ -81,4 +84,37 @@ button[data-open-modal] kbd {
 
 .main-frame {
 	padding-top: var(--sl-mobile-toc-height);
+}
+
+.sl-hidden {
+	display: none;
+}
+
+@media (min-width: 50rem) {
+	.md\:sl-block {
+		display: block;
+	}
+
+	.md\:sl-flex {
+		display: flex;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	line-height: var(--sl-line-height);
+	-webkit-font-smoothing: antialiased;
+}
+
+input,
+button,
+textarea,
+select {
+	font-family: inherit;
+	line-height: inherit;
 }
