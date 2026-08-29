@@ -75,11 +75,7 @@ button[data-open-modal] kbd {
 }
 
 .header {
-	position: static;
-	height: auto;
-	padding: 0;
-	background: transparent;
-	border-bottom: none;
+	display: contents;
 }
 
 .main-frame {
