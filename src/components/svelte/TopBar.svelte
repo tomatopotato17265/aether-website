@@ -74,6 +74,7 @@
 		transition: border-color 0.2s ease;
 	}
 
+	.topbar.is-scrolled {
 		border-bottom-color: var(--sl-color-hairline);
 	}
 
