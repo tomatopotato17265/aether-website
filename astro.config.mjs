@@ -5,7 +5,7 @@ import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://aether-website-2uc.pages.dev',
+	site: 'https://aether.wback.workers.dev',
 	integrations: [
 		svelte(),
 		starlight({
